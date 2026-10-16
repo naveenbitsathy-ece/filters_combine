@@ -205,19 +205,20 @@ The RTL and embedded C application must agree on the handshake protocol. The pro
 
 A Finite Impulse Response (FIR) filter calculates its output from the current and a finite number of previous input samples. A standard FIR filter does not use feedback from previous output samples.
 
-For an FIR filter with `N` taps:
+For an FIR filter with N taps:
 
-\[
-y[n] = \sum_{k=0}^{N-1} h[k]x[n-k]
-\]
+y[n] = Σ(k=0 to N−1) h[k] × x[n−k]
 
 Where:
+y[n]  – Output signal at time index n
+x[n−k] – Input signal delayed by k samples
+h[k]  – FIR filter coefficient (impulse response)
+N     – Number of filter taps
+k     – Summation index, ranging from 0 to N−1
 
-- `x[n]` is the current input sample.
-- `y[n]` is the output sample.
-- `h[k]` is the FIR coefficient at index `k`.
-- `N` is the number of taps.
-- `x[n-k]` is a delayed input sample.
+Expanded form:
+
+y[n] = h[0]x[n] + h[1]x[n−1] + ... + h[N−1]x[n−(N−1)]
 
 The coefficients determine the filter's frequency response. LPF, HPF, BPF, and BSF filters require different coefficient sets.
 
